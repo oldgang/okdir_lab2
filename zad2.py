@@ -4,25 +4,24 @@ import time
 
 MCAST_GRP = "239.0.0.3"
 MCAST_PORT = 3000
-HOST_IP = '42.0.144.157'
+HOST_IP = '192.168.0.68'
 messages = ["C2","C1","C3"]
 
 def check(buffer, counter):
-    print(f"CHECK({buffer})")
+    # print(f"CHECK({buffer})")
     # buffer is empty, return False
     if len(buffer) == 0:
-        print("Buffer is empty")
         return False
     # get the order of collected messages
     order = list()
     for message in buffer:
         order.append(int(message[1:]))
     # sort the collected messages and check if they are all in order
-    print(f"counter: {counter}")
+    # print(f"counter: {counter}")
     order.sort()
     orderCorrect = [x for x in range(counter, counter+len(order))]
-    print(f"order.sort(): {order}")
-    print(f"orderCorrect: {orderCorrect}\n\n")
+    # print(f"order.sort(): {order}")
+    # print(f"orderCorrect: {orderCorrect}\n\n")
     if order == orderCorrect:
         return True
     else:
@@ -37,7 +36,7 @@ def receiveMessages(data, server):
     elif '.69' in host:
         buffers[1].append(data)
     #C
-    elif '.1s57' in host:
+    elif '.68' in host:
         buffers[2].append(data)
     
     for i in range(3):
