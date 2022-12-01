@@ -83,10 +83,6 @@ while True:
         buffers = [list(), list(), list()]
         counters = [1, 1, 1]
         recv()
-        print("Leaving group and exiting")
-        sock.setsockopt(socket.IPPROTO_IP, socket.IP_DROP_MEMBERSHIP, mreq)
-        sock.close()
-        break
  
     # send message -> S
     if key == 's':
